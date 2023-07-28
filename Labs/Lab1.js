@@ -194,8 +194,75 @@ cityStats(sydney);
 const auckland = {
   name: "Auckland",
   population: 1_657_000,
-  state: "Auckland",
+  landmark: "Sky Tower",
   timezone: "New Zealand/Wellington",
 };
 
 cityStats(auckland);
+
+//9. Use the following variables to understand how JavaScript stores objects by reference.
+//a) Create a new moreSports variable equal to teamSports and add some new sport values to it (using push and unshift)
+//b) Create a new dog2 variable equal to dog1 and give it a new value
+//c) Create a new cat2 variable equal to cat1 and change its name property
+//d) Print the original teamSports, dog1 and cat1 variables to the console. Have they changed? Why?
+//e) Change the way the moreSports and cat2 variables are created to ensure the originals remain independent
+
+let teamSports = ["Hockey", "Cricket", "Volleyball"];
+let moreSports = teamSports.slice();
+
+moreSports.push("Basketball");
+moreSports.unshift("Rugby");
+teamSports.push("Skiing");
+
+console.log(teamSports);
+console.log(moreSports);
+
+let dog1 = "Bingo";
+let dog2 = dog1;
+dog2 = "Mac";
+
+console.log(dog1, dog2);
+
+let cat1 = { name: "Fluffy", breed: "Siberian" };
+let cat2 = { ...cat1 };
+
+cat2.name = "Meowy";
+
+console.log(cat1, cat2);
+
+//10. The following constructor function creates a new Person object with the given name and age values.
+//a) Create a new person using the constructor function and store it in a variable
+//b) Create a second person using different name and age values and store it in a separate variable;
+//c) Print out the properties of each person object to the console
+//d) Rewrite the constructor function as a class called PersonClass and use it to create a third person using different name and age values. Print it to the console as well.
+//e) Add a canDrive method to both the constructor function and the class that returns true if the person is old enough to drive.
+
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.human = true;
+  this.canDrive = function () {
+    return this.age >= 15;
+  };
+}
+
+const person1 = new Person("George", 27);
+const person2 = new Person("Nina", 26);
+
+console.log(person1, person2);
+
+class PersonClass {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+    this.human = true;
+  }
+
+  canDrive() {
+    return this.age >= 15; 
+  }
+}
+
+const person3 = new PersonClass("Anna", 24);
+
+console.log(person3);
