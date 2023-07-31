@@ -119,3 +119,5 @@ console.log('Iterating using destructuring:');
 for (const [key, value] of plantNames.entries()) {
   console.log(`Plant: ${key}, Scientific Name: ${value}`);
 }
+
+const food = new set (["pizza", "burger", "taco", "steak", "chicken"])
