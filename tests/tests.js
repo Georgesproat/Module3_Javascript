@@ -50,35 +50,72 @@ console.log("Index of Hamilton in cities_nz:", indexHamilton);
 //   { firstName: "Sheila", lastName: "Horne", age: 37, location: "VIC" },
 // ];
 
-const personConnor = people.find((person) => person.firstName === "Connor");
+// const personConnor = people.find((person) => person.firstName === "Connor");
 
 
-const peopleOver30 = people.filter((person) => person.age > 30);
+// const peopleOver30 = people.filter((person) => person.age > 30);
 
-console.log("Person with first name Connor:", personConnor);
-console.log("People over the age of 30:", peopleOver30);
+// console.log("Person with first name Connor:", personConnor);
+// console.log("People over the age of 30:", peopleOver30);
 
 
-let months = 'January,February,March,April,May,June,July,August,September,October,November,December';
+// let months = 'January,February,March,April,May,June,July,August,September,October,November,December';
 
-// Use split, map, and join to change the months into their short 3-letter version
-let shortMonths = months.split(',').map(month => month.slice(0, 3)).join(',');
+// // Use split, map, and join to change the months into their short 3-letter version
+// let shortMonths = months.split(',').map(month => month.slice(0, 3)).join(',');
 
-// In the Philippines, the 'ber' (brr) months are considered the colder part of the year
-let berMonths = months.split(',').filter(month => month.includes('ber'));
+// // In the Philippines, the 'ber' (brr) months are considered the colder part of the year
+// let berMonths = months.split(',').filter(month => month.includes('ber'));
 
-const people = [
-    {firstName: 'Wendy', lastName: 'Darton', age: 52, location: 'QLD'},
-    {firstName: 'Steven', lastName: 'Williams', age: 41, location: 'NSW'},
-    {firstName: 'Phillip', lastName: 'Robertson', age: 38, location: 'VIC'},
-    {firstName: 'Connor', lastName: 'Edmonds', age: 24, location: 'NZ'},
-    {firstName: 'Sheila', lastName: 'Horne', age: 37, location: 'VIC'},
-];
+// const people = [
+//     {firstName: 'Wendy', lastName: 'Darton', age: 52, location: 'QLD'},
+//     {firstName: 'Steven', lastName: 'Williams', age: 41, location: 'NSW'},
+//     {firstName: 'Phillip', lastName: 'Robertson', age: 38, location: 'VIC'},
+//     {firstName: 'Connor', lastName: 'Edmonds', age: 24, location: 'NZ'},
+//     {firstName: 'Sheila', lastName: 'Horne', age: 37, location: 'VIC'},
+// ];
 
 // Use for...of loop to print out the name and age of each person
-for (const person of people) {
-    console.log(`${person.firstName} ${person.lastName}, Age: ${person.age}`);
+// for (const person of people) {
+//     console.log(`${person.firstName} ${person.lastName}, Age: ${person.age}`);
+// }
+
+// console.log('Short 3-letter months:', shortMonths);
+// console.log('Ber months:', berMonths);
+
+const plantNames = new Map();
+plantNames.set('Blueberry', 'Vaccinium');
+plantNames.set('Daylily', 'Hemerocallis');
+plantNames.set('Foxglove', 'Digitalis');
+plantNames.set('Lavender', 'Lavandula');
+
+// Using set to add a new key-value pair
+plantNames.set('Rose', 'Rosa');
+
+// Using get to retrieve the value associated with a key
+const valueOfFoxglove = plantNames.get('Foxglove');
+console.log('Value of Foxglove:', valueOfFoxglove); // Output: 'Digitalis'
+
+// Iterating over keys
+console.log('Iterating over keys:');
+for (const key of plantNames.keys()) {
+  console.log(key);
 }
 
-console.log('Short 3-letter months:', shortMonths);
-console.log('Ber months:', berMonths);
+// Iterating over values
+console.log('Iterating over values:');
+for (const value of plantNames.values()) {
+  console.log(value);
+}
+
+// Iterating over entries (key-value pairs)
+console.log('Iterating over entries (key-value pairs):');
+for (const [key, value] of plantNames) {
+  console.log(`${key}: ${value}`);
+}
+
+// Iterating using destructuring
+console.log('Iterating using destructuring:');
+for (const [key, value] of plantNames.entries()) {
+  console.log(`Plant: ${key}, Scientific Name: ${value}`);
+}
