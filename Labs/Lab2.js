@@ -134,22 +134,94 @@ function currencyOperation(float1,operation,float2) {
       result = (Number(float1.toFixed(2)) + Number(float2.toFixed(2))).toFixed(
         2
       );
+      break;
 
     case "-":
       result = (Number(float1.toFixed(2)) - Number(float2.toFixed(2))).toFixed(
         2
       );
+      break;
 
     case "/":
       result = (Number(float1.toFixed(2)) / Number(float2.toFixed(2))).toFixed(
         2
       );
+      break;
 
     case "*":
       result = (
-        Number(float1.toFixed(precision)) * Number(float2.toFixed(2))
+        Number(float1.toFixed(2)) * Number(float2.toFixed(2))
       ).toFixed(2);
+      break;
   }
 
   return parseFloat(result);
 }
+
+console.log(currencyOperation(5,'*',6))
+console.log(currencyOperation(12,'/',4))
+
+// 6. Create a function unique(duplicatesArray) which takes an array parameter that may
+// include duplicates. Your function should return an array containing only the unique values
+// from duplicatesArray.
+// Test with the following arrays and create another one of your own.
+
+function unique(duplicatesArray) {
+  return [...new Set(duplicatesArray)];
+}
+
+const colours = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow'];
+const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43];
+const customArray = [12, 2, 12, 34, 45, 45, 52, 52, 51];
+
+console.log(unique(colours));     
+console.log(unique(testScores)); 
+console.log(unique(customArray));
+
+// 7. Use the following array of book objects to practice the array functions for map, find and
+// filter. Test each of your answers to the below tasks.
+// a) Write a function getBookTitle(bookId) that uses the find function to return the
+// title of the book object with the matching id.
+
+const books = [
+  { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+  { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+  { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
+  { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
+  { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
+];
+
+function getBookTitle(bookId) {
+  const book = books.find((book) => book.id === bookId);
+  return book ? book.title : null;
+}
+
+console.log(getBookTitle(3));
+console.log(getBookTitle(6)); 
+
+// b) Write a function getOldBooks() that uses the filter function to return all book
+// objects written before 1950.
+function getOldBooks() {
+  const oldBooks = books.filter((book) => book.year < 1950);
+  return oldBooks;
+}
+
+console.log(getOldBooks())
+// c) Write a function addGenre() that uses the map function to add a new genre property
+// to all of the above books, with the value ‘classic’.
+
+function addGenre() {
+  const booksWithGenre = books.map((book) => {
+    return { ...book, genre: 'classic' };
+  });
+
+  return booksWithGenre;
+}
+
+console.log(addGenre());
+
+// d) (Extension) Write a function getTitles(authorInitial) that uses map and
+// filter together to return an array of book titles for books written by authors whose
+// names start with authorInitial.
+// e) (Extension) Write a function latestBook() that uses find and forEach to get the
+// book with the most recent publication date.
