@@ -69,10 +69,12 @@ console.log(animals);
 
 function findMatchingAnimals(beginsWith) {
   const beginsWithLowerCase = beginsWith.toLowerCase();
-  return animals.filter(animal => animal.toLowerCase().startsWith(beginsWithLowerCase));
-};
+  return animals.filter((animal) =>
+    animal.toLowerCase().startsWith(beginsWithLowerCase)
+  );
+}
 
-console.log (findMatchingAnimals('ti'))
+console.log(findMatchingAnimals("ti"));
 
 // 4. Write a function camelCase(cssProp) that changes dash-separated CSS properties like
 // 'margin-left' into camel-cased 'marginLeft'.
@@ -81,11 +83,73 @@ console.log (findMatchingAnimals('ti'))
 // b) Create variants of the camelCase function that use different types of for loops, and
 // c) with and without the conditional operator.
 
-
-console.log(camelCase('margin-left')) // marginLeft
-console.log(camelCase('background-image')) // backgroundImage
-console.log(camelCase('display')) // display
+console.log(camelCase("margin-left")); // marginLeft
+console.log(camelCase("background-image")); // backgroundImage
+console.log(camelCase("display")); // display
 
 function camelCase(cssProp) {
-  return cssProp.replace(/-([a-z])/g, (match, letter) => letter.toUpperCase());
+  const words = cssProp.split("-");
+  const capitalizedWords = words.map((word, index) => {
+    if (index === 0) {
+      return word;
+    } else {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  });
+  return capitalizedWords.join("");
+}
+
+// 5. Decimal number operations in JavaScript can lead to unexpected results, as in the
+// following:
+let twentyCents = 0.2;
+let tenCents = 0.1;
+console.log(`${twentyCents} + ${tenCents} = ${twentyCents + tenCents}`);
+// 0.2 + 0.1 = 0.30000000000000004
+// We can sometimes avoid this using the toFixed function to force the number of decimal
+// places as below, but it’s not always useful:
+let fixedTwenty = twentyCents.toFixed(2);
+let fixedTen = tenCents.toFixed(2);
+console.log(fixedTwenty + fixedTen); //why is this not working?
+// it changes them to strings and they dont add numerically, they add like 0.200.10
+// b) Create a function currencyAddition(float1, float2) which safely adds the two
+// decimal numbers float1 and float2 and returns the correct float result.
+function currencyAddition(float1, float2) {
+  const result = (
+    Number(float1.toFixed(2)) + Number(float2.toFixed(2))
+  ).toFixed(2);
+  return parseFloat(result);
+}
+
+console.log(currencyAddition(twentyCents, tenCents));
+
+// c) Create a function currencyOperation(float1, float2, operation) which
+// safely performs the given operation (either +, -, / or *) on the two numbers and returns
+// the correct float result.
+
+function currencyOperation(float1,operation,float2) {
+  let result;
+
+  switch (operation) {
+    case "+":
+      result = (Number(float1.toFixed(2)) + Number(float2.toFixed(2))).toFixed(
+        2
+      );
+
+    case "-":
+      result = (Number(float1.toFixed(2)) - Number(float2.toFixed(2))).toFixed(
+        2
+      );
+
+    case "/":
+      result = (Number(float1.toFixed(2)) / Number(float2.toFixed(2))).toFixed(
+        2
+      );
+
+    case "*":
+      result = (
+        Number(float1.toFixed(precision)) * Number(float2.toFixed(2))
+      ).toFixed(2);
+  }
+
+  return parseFloat(result);
 }
