@@ -126,7 +126,7 @@ console.log(currencyAddition(twentyCents, tenCents));
 // safely performs the given operation (either +, -, / or *) on the two numbers and returns
 // the correct float result.
 
-function currencyOperation(float1,operation,float2) {
+function currencyOperation(float1, operation, float2) {
   let result;
 
   switch (operation) {
@@ -149,17 +149,17 @@ function currencyOperation(float1,operation,float2) {
       break;
 
     case "*":
-      result = (
-        Number(float1.toFixed(2)) * Number(float2.toFixed(2))
-      ).toFixed(2);
+      result = (Number(float1.toFixed(2)) * Number(float2.toFixed(2))).toFixed(
+        2
+      );
       break;
   }
 
   return parseFloat(result);
 }
 
-console.log(currencyOperation(5,'*',6))
-console.log(currencyOperation(12,'/',4))
+console.log(currencyOperation(5, "*", 6));
+console.log(currencyOperation(12, "/", 4));
 
 // 6. Create a function unique(duplicatesArray) which takes an array parameter that may
 // include duplicates. Your function should return an array containing only the unique values
@@ -170,12 +170,21 @@ function unique(duplicatesArray) {
   return [...new Set(duplicatesArray)];
 }
 
-const colours = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow'];
+const colours = [
+  "red",
+  "green",
+  "blue",
+  "yellow",
+  "orange",
+  "red",
+  "blue",
+  "yellow",
+];
 const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43];
 const customArray = [12, 2, 12, 34, 45, 45, 52, 52, 51];
 
-console.log(unique(colours));     
-console.log(unique(testScores)); 
+console.log(unique(colours));
+console.log(unique(testScores));
 console.log(unique(customArray));
 
 // 7. Use the following array of book objects to practice the array functions for map, find and
@@ -184,11 +193,21 @@ console.log(unique(customArray));
 // title of the book object with the matching id.
 
 const books = [
-  { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
-  { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
-  { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
-  { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
-  { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
+  {
+    id: 1,
+    title: "The Great Gatsby",
+    author: "F. Scott Fitzgerald",
+    year: 1925,
+  },
+  { id: 2, title: "To Kill a Mockingbird", author: "Harper Lee", year: 1960 },
+  { id: 3, title: "1984", author: "George Orwell", year: 1949 },
+  { id: 4, title: "Brave New World", author: "Aldous Huxley", year: 1932 },
+  {
+    id: 5,
+    title: "The Catcher in the Rye",
+    author: "J.D. Salinger",
+    year: 1951,
+  },
 ];
 
 function getBookTitle(bookId) {
@@ -197,7 +216,7 @@ function getBookTitle(bookId) {
 }
 
 console.log(getBookTitle(3));
-console.log(getBookTitle(6)); 
+console.log(getBookTitle(6));
 
 // b) Write a function getOldBooks() that uses the filter function to return all book
 // objects written before 1950.
@@ -206,13 +225,13 @@ function getOldBooks() {
   return oldBooks;
 }
 
-console.log(getOldBooks())
+console.log(getOldBooks());
 // c) Write a function addGenre() that uses the map function to add a new genre property
 // to all of the above books, with the value ‘classic’.
 
 function addGenre() {
   const booksWithGenre = books.map((book) => {
-    return { ...book, genre: 'classic' };
+    return { ...book, genre: "classic" };
   });
 
   return booksWithGenre;
@@ -225,13 +244,14 @@ console.log(addGenre());
 // names start with authorInitial.
 
 function getTitles(authorInitial) {
-  const filteredBooks = books.filter((book) => book.author.startsWith(authorInitial));
+  const filteredBooks = books.filter((book) =>
+    book.author.startsWith(authorInitial)
+  );
   const titles = filteredBooks.map((book) => book.title);
   return titles;
 }
 
-
-const authorInitial = 'F';
+const authorInitial = "F";
 const titlesByAuthorInitial = getTitles(authorInitial);
 console.log(titlesByAuthorInitial);
 
@@ -257,18 +277,18 @@ console.log(latestBookInfo);
 
 // 8. The following code creates a new Map object for storing names beginning with A, B, or C
 // with their phone numbers.
-const phoneBookABC = new Map() //an empty map to begin with
-phoneBookABC.set('Annabelle', '0412312343')
-phoneBookABC.set('Barry', '0433221117')
-phoneBookABC.set('Caroline', '0455221182')
+const phoneBookABC = new Map(); //an empty map to begin with
+phoneBookABC.set("Annabelle", "0412312343");
+phoneBookABC.set("Barry", "0433221117");
+phoneBookABC.set("Caroline", "0455221182");
 // a) Create a new phoneBookDEF Map to store names beginning with D, E or F
 // b) Initialise the contents of phoneBookDEF by passing in an array of keys/values
-const phoneBookDEF = new Map(); 
-phoneBookDEF.set('Daniel', '0237778888');
-phoneBookDEF.set('Emma', '0212223333');
-phoneBookDEF.set('Frankie', '0223334444');
+const phoneBookDEF = new Map();
+phoneBookDEF.set("Daniel", "0237778888");
+phoneBookDEF.set("Emma", "0212223333");
+phoneBookDEF.set("Frankie", "0223334444");
 // c) Update the phone number for Caroline
-phoneBookABC.set('Caroline', '0225556666');
+phoneBookABC.set("Caroline", "0225556666");
 // d) Write a function printPhoneBook(contacts) that prints the names and phone
 // numbers in the given Map
 function printPhoneBook(contacts) {
@@ -289,7 +309,82 @@ phoneBook.forEach((phoneNumber, name) => {
   console.log(name);
 });
 
+// 9. Given the below salaries object, perform the following tasks.
+let salaries = {
+  Timothy: 35000,
+  David: 25000,
+  Mary: 55000,
+  Christina: 75000,
+  James: 43000,
+};
 
+// a) Write a function sumSalaries(salaries) that calculates and returns the total of all salaries
+function sumSalaries(salaries) {
+  let totalSalary = 0;
+  for (let salary of Object.values(salaries)) {
+    totalSalary += salary;
+  }
+  return totalSalary;
+}
+console.log(sumSalaries(salaries));
 
+// b) Write a function topEarner(salaries) that calculates and returns the name of the person
+// earning the highest salary
+function topEarner(salaries) {
+  let highestSalary = 0;
+  let topEarnerName = null;
 
+  for (let [name, salary] of Object.entries(salaries)) {
+    if (salary > highestSalary) {
+      highestSalary = salary;
+      topEarnerName = name;
+    }
+  }
 
+  return topEarnerName;
+}
+console.log(topEarner(salaries));
+
+// 10.The following code uses the Date object to print the current time and the number of hours
+// that have passed today so far. Extend the code to do the following:
+const today = new Date();
+console.log('Current time is ' + today.toLocaleTimeString())
+console.log(today.getHours() + ' hours have passed so far today')
+// a) Print the total number of minutes that have passed so far today
+
+const minutesPassed = today.getHours() * 60 + today.getMinutes();
+console.log('Total minutes passed so far today:', minutesPassed);
+
+// b) Print the total number of seconds that have passed so far today
+
+const secondsPassed = (today.getHours() * 60 + today.getMinutes()) * 60 + today.getSeconds();
+console.log('Total seconds passed so far today:', secondsPassed);
+
+// c) Calculate and print your age as: 'I am x years, y months and z days old'
+
+const birthDate = new Date('1995-08-26'); 
+
+const ageInMilliseconds = today - birthDate;
+const ageInSeconds = ageInMilliseconds / 1000;
+const ageInMinutes = ageInSeconds / 60;
+const ageInHours = ageInMinutes / 60;
+const ageInDays = ageInHours / 24;
+
+const years = Math.floor(ageInDays / 365);
+const months = Math.floor((ageInDays % 365) / 30);
+const days = Math.floor(ageInDays % 365) % 30;
+
+console.log(`I am ${years} years, ${months} months, and ${days} days old.`);
+
+// d) Write a function daysInBetween(date1, date2) which calculates and returns the amount
+// of days in between the two given dates.
+
+function daysInBetween(date1, date2) {
+  const difference = Math.abs(date2 - date1);
+  const millisecondsPerDay = 24 * 60 * 60 * 1000;
+  return Math.floor(difference / millisecondsPerDay);
+}
+
+const date1 = new Date('1995-08-26');
+const date2 = new Date('2035-08-26');
+console.log('Days between date1 and date2:', daysInBetween(date1, date2));
