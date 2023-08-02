@@ -223,5 +223,73 @@ console.log(addGenre());
 // d) (Extension) Write a function getTitles(authorInitial) that uses map and
 // filter together to return an array of book titles for books written by authors whose
 // names start with authorInitial.
+
+function getTitles(authorInitial) {
+  const filteredBooks = books.filter((book) => book.author.startsWith(authorInitial));
+  const titles = filteredBooks.map((book) => book.title);
+  return titles;
+}
+
+
+const authorInitial = 'F';
+const titlesByAuthorInitial = getTitles(authorInitial);
+console.log(titlesByAuthorInitial);
+
 // e) (Extension) Write a function latestBook() that uses find and forEach to get the
 // book with the most recent publication date.
+
+function latestBook() {
+  let latestBook = null;
+  let latestYear = 0;
+
+  books.forEach((book) => {
+    if (book.year > latestYear) {
+      latestBook = book;
+      latestYear = book.year;
+    }
+  });
+
+  return latestBook;
+}
+
+const latestBookInfo = latestBook();
+console.log(latestBookInfo);
+
+// 8. The following code creates a new Map object for storing names beginning with A, B, or C
+// with their phone numbers.
+const phoneBookABC = new Map() //an empty map to begin with
+phoneBookABC.set('Annabelle', '0412312343')
+phoneBookABC.set('Barry', '0433221117')
+phoneBookABC.set('Caroline', '0455221182')
+// a) Create a new phoneBookDEF Map to store names beginning with D, E or F
+// b) Initialise the contents of phoneBookDEF by passing in an array of keys/values
+const phoneBookDEF = new Map(); 
+phoneBookDEF.set('Daniel', '0237778888');
+phoneBookDEF.set('Emma', '0212223333');
+phoneBookDEF.set('Frankie', '0223334444');
+// c) Update the phone number for Caroline
+phoneBookABC.set('Caroline', '0225556666');
+// d) Write a function printPhoneBook(contacts) that prints the names and phone
+// numbers in the given Map
+function printPhoneBook(contacts) {
+  contacts.forEach((phoneNumber, name) => {
+    console.log(`${name}: ${phoneNumber}`);
+  });
+}
+
+console.log("Phone Book ABC:");
+printPhoneBook(phoneBookABC);
+console.log("Phone Book DEF:");
+printPhoneBook(phoneBookDEF);
+// e) Combine the contents of the two individual Maps into a single phoneBook Map
+const phoneBook = new Map([...phoneBookABC, ...phoneBookDEF]);
+// f) Print out the full list of names in the combined phone book
+console.log("Combined Phone Book:");
+phoneBook.forEach((phoneNumber, name) => {
+  console.log(name);
+});
+
+
+
+
+
