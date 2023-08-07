@@ -68,7 +68,6 @@
 // // ++ update your object by changing one of the properties
 // // famousMovie {...famousMovie.Awards:'Won award for best directing'}
 
-
 // // ++ use bind to make sure the delayed method still prints the original (not updated) values
 
 // // object with both data properties and accessor properties
@@ -90,8 +89,6 @@
 //   for (let prop in jackBlack) console.log(`${prop} is ${jackBlack[prop]}`) // enumerable props
 //   // includes firstName, surname, dateofBirth, fullName and age
 
-
-
 // function User(firstName,lastName, birthday) {
 //   this.firstName = firstName;
 //   this.lastName = lastName;
@@ -107,12 +104,12 @@
 
 //   // Define getters and setters for first and last name parts
 //   Object.defineProperties(this, {
-   
+
 //     fullname: {
 //       get() {
 //         return this.firstName +" " + this.lastName ;
 //       },
-      
+
 //     }
 //   });
 // }
@@ -129,14 +126,11 @@
 // George.lastName = "Smith";        // Set last name
 // console.log(George.fullname); // Get fullname
 
-
-
 // const animal = {
 //   Sleeps: true,
 //   Eats: true,
 //   Legs: 4
 // };
-
 
 // let Dog = Object.create(animal, {
 //   talks: {
@@ -150,7 +144,6 @@
 // });
 
 // console.log(Dog)
-
 
 // for (let prop in Dog) console.log('${prop} is ${Dog[prop]}');
 
@@ -167,72 +160,131 @@
 
 // for(let prop in snake) console.log('${prop} is ${snake[prop]}')
 
-class Animal {
+// class Animal {
 
-  // static homePlanet = 'Earth';
+// static homePlanet = 'Earth';
 
-  constructor(name, topSpeed) {
-      this.speed = 0;
-      this.topSpeed = topSpeed;
-      this.name = name;
-      this.type = 'animal'
-  }
-  
-  run() {
-      this.speed = this.topSpeed;
-      console.log(`${this.name} runs with speed ${this.speed}.`);
-  }
+//   constructor(name, topSpeed) {
+//       this.speed = 0;
+//       this.topSpeed = topSpeed;
+//       this.name = name;
+//       this.type = 'animal'
+//   }
 
-  stop() {
-      this.speed = 0;
-      console.log(`${this.name} stands still.`);
-  }
+//   run() {
+//       this.speed = this.topSpeed;
+//       console.log(`${this.name} runs with speed ${this.speed}.`);
+//   }
 
-  describe() {
-      console.log(`${this.name} has a top speed of ${this.topSpeed}km p/h and a type of ${this.type}`)
-  };
+//   stop() {
+//       this.speed = 0;
+//       console.log(`${this.name} stands still.`);
+//   }
 
-  // static compare(animal1, animal2) {
-  //     return animal1.topSpeed > animal2.topSpeed
-  // }
+//   describe() {
+//       console.log(`${this.name} has a top speed of ${this.topSpeed}km p/h and a type of ${this.type}`)
+//   };
+
+//   // static compare(animal1, animal2) {
+//   //     return animal1.topSpeed > animal2.topSpeed
+//   // }
+// }
+
+// // 1. create your own type of animal class the extends from the parent
+// // 2. give it some additional custom properties
+// class Hedgehog extends Animal {
+//   constructor(name, topspeed, prickly )
+//   {
+//     super(name, topspeed);
+//     this.prickly = prickly;
+//     this.type = 'Hedgehog';
+//   }
+//   curlUp() {
+//     console.log(`${this.name} curls up`);
+//   }
+//   stop() {
+//     super.stop();
+//     this.curlUp();
+//   }
+//   }
+// const spike = new Hedgehog('Spike',2,true);
+// console.log(spike)
+// spike.stop()
+
+// function checkDate(date) {
+//   try {
+
+//   } catch (error) {
+//     console.error('Error:', error.message);
+//   } finally {
+//     console.log('Error check done.');
+//   }
+// }
+
+// checkDate('1995-8-26')
+// checkDate('Pineapple')
+// checkDate('1234')
+
+function preparePizza() {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log("Started preparing pizza ...");
+      resolve(makeBase);
+    }, 0)
+  );
 }
 
-// 1. create your own type of animal class the extends from the parent
-// 2. give it some additional custom properties
-class Hedgehog extends Animal {
-  constructor(name, topspeed, prickly )
-  {
-    super(name, topspeed);
-    this.prickly = prickly;
-    this.type = 'Hedgehog';
-  }
-  curlUp() {
-    console.log(`${this.name} curls up`);
-  }
-  stop() {
-    super.stop();
-    this.curlUp();
-  }
-  }
-const spike = new Hedgehog('Spike',2,true);
-console.log(spike)
-spike.stop()
+const makeBase = async function () {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log("Made the base");
+      resolve(addSauceAndCheese);
+    }, 1000)
+  );
+};
 
+const addSauceAndCheese = async () => {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log("Added the sauce and cheese");
+      resolve(addToppings);
+    }, 2000)
+  );
+};
 
+const addToppings = async () => {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log("Added the pizza toppings");
+      resolve(cookPizza);
+    }, 3000)
+  );
+};
 
-
-function checkDate(date) {
-  try {
-   
-
-   
-  } catch (error) {
-    console.error('Error:', error.message);
-  } finally {
-    console.log('Error check done.');
-  }
+const cookPizza = async function () {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log("Cooked the pizza");
+      resolve(pizzaIsReady);
+    }, 4000)
+  );
+};
+function pizzaIsReady() {
+  return new Promise((resolve) =>
+    setTimeout(() => {
+      console.log("Pizza is ready");
+      resolve();
+    }, 5000)
+  );
 }
 
-checkDate('1995-8-26') 
-checkDate('Pineapple')
-checkDate('1234')
+async function makePizza() {
+  await preparePizza();
+  await makeBase();
+  await addSauceAndCheese();
+  await addToppings();
+  await cookPizza();
+  await pizzaIsReady();
+}
+
+makePizza();
